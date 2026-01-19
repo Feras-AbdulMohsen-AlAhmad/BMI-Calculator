@@ -9,6 +9,12 @@ html {
 
 /* ============ CSS Variables ============ */
 :root {
+  /* Safe Area Insets for Notched Devices */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+
   /* Primary Colors - Health Green */
   --primary: #10b981;
   --primary-light: #34d399;
@@ -216,8 +222,8 @@ body {
 /* ============ Controls Bar ============ */
 .controls-bar {
   position: fixed;
-  top: var(--spacing-lg);
-  right: var(--spacing-lg);
+  top: max(var(--spacing-lg), var(--safe-area-top));
+  right: max(var(--spacing-lg), var(--safe-area-right));
   display: flex;
   gap: var(--spacing-sm);
   z-index: 1000;
@@ -225,7 +231,7 @@ body {
 
 [dir="rtl"] .controls-bar {
   right: auto;
-  left: var(--spacing-lg);
+  left: max(var(--spacing-lg), var(--safe-area-left));
 }
 
 .control-btn {
@@ -2406,4 +2412,218 @@ input:focus-visible {
     border-color: var(--primary);
     background: var(--primary-bg);
   }
+
+  .control-btn:hover,
+  .calculate-btn:hover,
+  .scroll-top-btn:hover {
+    transform: none;
+  }
+}
+
+/* ============ COMPREHENSIVE RESPONSIVE ENHANCEMENTS ============ */
+
+/* Prevent Horizontal Overflow */
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.bg-decorations {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* Input Font Size - Prevent iOS Zoom on Focus */
+.input-wrapper input {
+  font-size: max(16px, 1rem);
+}
+
+/* Control Buttons Always Meet Touch Target */
+.control-btn {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Scroll Top Safe Area Support */
+.scroll-top-btn {
+  bottom: max(var(--spacing-xl), var(--safe-area-bottom));
+  right: max(var(--spacing-xl), var(--safe-area-right));
+  min-width: 48px;
+  min-height: 48px;
+}
+
+[dir="rtl"] .scroll-top-btn {
+  right: auto;
+  left: max(var(--spacing-xl), var(--safe-area-left));
+}
+
+/* Slider Touch Target Enhancement */
+.slider {
+  padding: 18px 0;
+  margin: -18px 0;
+  background-clip: content-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slider::-webkit-slider-thumb {
+  width: 28px;
+  height: 28px;
+}
+
+.slider::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+}
+
+/* Toast Width Constraint */
+.toast {
+  max-width: calc(100vw - 2rem);
+  width: auto;
+}
+
+/* Fluid Typography */
+.logo-text {
+  font-size: clamp(1.1rem, 4vw, 2rem);
+}
+
+.tagline {
+  font-size: clamp(0.7rem, 2.5vw, 1.125rem);
+}
+
+.card-header h2 {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+}
+
+.bmi-number {
+  font-size: clamp(1.75rem, 8vw, 3rem);
+}
+
+/* History Item Mobile Layout Fix */
+@media (max-width: 479px) {
+  .history-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .imperial-input:not(.hidden) {
+    flex-wrap: nowrap;
+    gap: var(--spacing-xs);
+  }
+
+  .imperial-input input {
+    flex: 1;
+    min-width: 45px;
+    max-width: 60px;
+  }
+
+  .imperial-input .input-unit {
+    font-size: 0.7rem;
+  }
+
+  .toast {
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    transform: translateX(0) translateY(100px);
+  }
+
+  .toast.show {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* Result Actions Grid Fix for Medium Phones */
+@media (min-width: 400px) and (max-width: 479px) {
+  .result-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Extra Small - Hide Some Scale Labels */
+@media (max-width: 359px) {
+  .scale-labels span:nth-child(2),
+  .scale-labels span:nth-child(4) {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+  }
+
+  .imperial-input input {
+    min-width: 35px;
+    max-width: 50px;
+    font-size: 16px;
+  }
+}
+
+/* Disable Heavy Animations on Small Screens */
+@media (max-width: 767px) {
+  .decoration {
+    animation: none;
+  }
+}
+
+/* Landscape Mode Improvements */
+@media (max-height: 500px) and (orientation: landscape) {
+  .tagline {
+    display: none;
+  }
+
+  .info-section,
+  .footer {
+    display: none;
+  }
+
+  .logo {
+    flex-direction: row;
+    gap: var(--spacing-sm);
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+  }
+
+  .gender-card {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    min-height: 60px;
+  }
+}
+
+/* Very Tall Screens - Show Hero */
+@media (min-height: 1000px) and (max-width: 767px) {
+  .hero-section {
+    display: flex !important;
+    padding: var(--spacing-xl) 0;
+  }
+
+  .hero-illustration {
+    max-width: 300px;
+  }
+}
+
+/* Focus States for Sliders */
+.slider:focus-visible {
+  outline: none;
+}
+
+.slider:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 3px var(--primary-bg),
+    0 0 0 5px var(--primary);
+}
+
+.slider:focus-visible::-moz-range-thumb {
+  box-shadow:
+    0 0 0 3px var(--primary-bg),
+    0 0 0 5px var(--primary);
+}
+
+/* Gender Cards Focus State */
+.gender-options input[type="radio"]:focus-visible + .gender-card {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
