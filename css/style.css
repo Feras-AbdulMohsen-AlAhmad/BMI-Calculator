@@ -1435,24 +1435,80 @@ input[type="number"] {
 }
 
 /* ============ Responsive Design ============ */
-@media (max-width: 768px) {
+
+/* Large Desktop (1200px+) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+
+  .calculator-section {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+  }
+}
+
+/* Desktop (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+/* Tablet Landscape (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    padding: var(--spacing-lg);
+  }
+
+  .header {
+    padding: var(--spacing-lg) 0;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .logo-text {
+    font-size: 1.75rem;
+  }
+
+  .hero-section {
+    padding: var(--spacing-md) 0;
+  }
+
+  .hero-illustration {
+    max-width: 350px;
+  }
+
+  .calculator-section {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .info-section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Tablet Portrait (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
   .container {
     padding: var(--spacing-md);
   }
 
   .header {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
+    margin-bottom: var(--spacing-md);
   }
 
   .logo {
-    flex-direction: column;
+    flex-direction: row;
     gap: var(--spacing-sm);
   }
 
   .logo-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    font-size: 1.25rem;
   }
 
   .logo-text {
@@ -1461,15 +1517,32 @@ input[type="number"] {
 
   .tagline {
     font-size: 0.875rem;
+    max-width: 320px;
+  }
+
+  .hero-section {
+    padding: var(--spacing-sm) 0;
   }
 
   .hero-illustration {
-    max-width: 300px;
+    max-width: 280px;
+  }
+
+  .calculator-section {
+    gap: var(--spacing-lg);
   }
 
   .calculator-card,
   .results-card {
     padding: var(--spacing-lg);
+  }
+
+  .card-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .gender-options {
+    gap: var(--spacing-sm);
   }
 
   .gender-card {
@@ -1483,16 +1556,20 @@ input[type="number"] {
   }
 
   .bmi-circle {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
   }
 
   .bmi-number {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
+  }
+
+  .info-section {
+    grid-template-columns: 1fr;
   }
 
   .result-actions {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .controls-bar {
@@ -1506,13 +1583,254 @@ input[type="number"] {
   }
 }
 
-@media (max-width: 480px) {
+/* Mobile Large (480px - 575px) */
+@media (min-width: 480px) and (max-width: 575px) {
+  html {
+    font-size: 15px;
+  }
+
+  .container {
+    padding: var(--spacing-md);
+  }
+
+  .header {
+    padding: var(--spacing-md) 0;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .logo {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .logo-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.35rem;
+  }
+
+  .tagline {
+    font-size: 0.8rem;
+    max-width: 280px;
+  }
+
+  .hero-section {
+    padding: var(--spacing-xs) 0;
+  }
+
+  .hero-illustration {
+    max-width: 220px;
+  }
+
+  .main-content {
+    gap: var(--spacing-lg);
+  }
+
+  .calculator-card,
+  .results-card {
+    padding: var(--spacing-md);
+  }
+
+  .card-header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .card-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .bmi-form {
+    gap: var(--spacing-md);
+  }
+
+  .gender-card {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .gender-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+
+  .gender-card span {
+    font-size: 0.85rem;
+  }
+
+  .input-wrapper {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .input-wrapper input {
+    font-size: 1rem;
+  }
+
+  .calculate-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 1rem;
+  }
+
+  .bmi-circle {
+    width: 140px;
+    height: 140px;
+  }
+
+  .bmi-number {
+    font-size: 2.25rem;
+  }
+
+  .bmi-category {
+    padding: var(--spacing-sm) var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .category-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .category-text {
+    font-size: 1rem;
+  }
+
+  .info-item {
+    padding: var(--spacing-sm);
+  }
+
+  .info-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.875rem;
+  }
+
+  .info-label {
+    font-size: 0.7rem;
+  }
+
+  .info-value {
+    font-size: 0.9rem;
+  }
+
+  .health-tips {
+    padding: var(--spacing-md);
+  }
+
+  .result-actions {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .action-btn {
+    padding: var(--spacing-sm);
+  }
+
+  .info-section {
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+
+  .info-card {
+    padding: var(--spacing-md);
+  }
+
+  .controls-bar {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+  }
+
+  [dir="rtl"] .controls-bar {
+    right: auto;
+    left: var(--spacing-sm);
+  }
+
+  .control-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Mobile Small (< 480px) */
+@media (max-width: 479px) {
   html {
     font-size: 14px;
   }
 
+  .container {
+    padding: var(--spacing-sm);
+  }
+
+  .header {
+    padding: var(--spacing-sm) 0;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .logo {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .logo-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.35rem;
+    border-radius: var(--radius-md);
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+  }
+
+  .tagline {
+    font-size: 0.75rem;
+    max-width: 250px;
+    line-height: 1.4;
+  }
+
   .hero-section {
     display: none;
+  }
+
+  .main-content {
+    gap: var(--spacing-md);
+  }
+
+  .calculator-section {
+    gap: var(--spacing-md);
+  }
+
+  .calculator-card,
+  .results-card {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+  }
+
+  .card-header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .card-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .card-header p {
+    font-size: 0.75rem;
+  }
+
+  .bmi-form {
+    gap: var(--spacing-md);
+  }
+
+  .form-group > label {
+    font-size: 0.8rem;
+  }
+
+  .toggle-switch-container {
+    padding: 3px;
   }
 
   .toggle-btn {
@@ -1520,12 +1838,394 @@ input[type="number"] {
     font-size: 0.75rem;
   }
 
+  .gender-options {
+    gap: var(--spacing-sm);
+  }
+
+  .gender-card {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-xs);
+  }
+
+  .gender-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .gender-card span {
+    font-size: 0.8rem;
+  }
+
+  .input-wrapper {
+    padding: 0.4rem 0.6rem;
+    gap: var(--spacing-xs);
+  }
+
+  .input-icon {
+    font-size: 1rem;
+  }
+
+  .input-wrapper input {
+    font-size: 0.95rem;
+  }
+
+  .input-unit {
+    font-size: 0.75rem;
+  }
+
+  .slider {
+    height: 5px;
+  }
+
+  .slider::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+  }
+
+  .calculate-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.95rem;
+    margin-top: var(--spacing-sm);
+    border-radius: var(--radius-md);
+  }
+
+  .calculate-btn i {
+    font-size: 1rem;
+  }
+
+  .results-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .bmi-display {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .bmi-circle {
+    width: 120px;
+    height: 120px;
+  }
+
+  .ring-bg,
+  .ring-progress {
+    stroke-width: 10;
+  }
+
+  .bmi-number {
+    font-size: 2rem;
+  }
+
+  .bmi-label {
+    font-size: 0.7rem;
+  }
+
+  .bmi-category {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .category-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.85rem;
+  }
+
+  .category-text {
+    font-size: 0.9rem;
+  }
+
+  .bmi-scale {
+    padding: var(--spacing-md) 0;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .scale-bar {
+    height: 10px;
+  }
+
+  .scale-pointer {
+    top: calc(var(--spacing-md) - 6px);
+  }
+
+  .pointer-arrow {
+    border-left-width: 6px;
+    border-right-width: 6px;
+    border-top-width: 10px;
+  }
+
+  .scale-labels {
+    margin-top: var(--spacing-md);
+  }
+
   .scale-labels span {
-    font-size: 0.625rem;
+    font-size: 0.6rem;
+  }
+
+  .results-info {
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .info-item {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .info-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .info-label {
+    font-size: 0.65rem;
+  }
+
+  .info-value {
+    font-size: 0.85rem;
+  }
+
+  .health-tips {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--radius-md);
+  }
+
+  .health-tips h4 {
+    font-size: 0.85rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .tips-list {
+    gap: var(--spacing-xs);
+  }
+
+  .tips-list li {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .result-actions {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xs);
+  }
+
+  .action-btn {
+    padding: var(--spacing-sm);
+    font-size: 0.8rem;
+    border-radius: var(--radius-md);
+  }
+
+  .history-section {
+    margin-top: var(--spacing-md);
+  }
+
+  .history-card {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+  }
+
+  .history-header h3 {
+    font-size: 1rem;
+  }
+
+  .history-item {
+    padding: var(--spacing-sm);
+  }
+
+  .history-bmi {
+    width: 40px;
+    height: 40px;
+    font-size: 0.8rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .history-category {
+    font-size: 0.8rem;
+  }
+
+  .history-date {
+    font-size: 0.65rem;
+  }
+
+  .history-stats {
+    font-size: 0.65rem;
   }
 
   .info-section {
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+  }
+
+  .info-card {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+  }
+
+  .info-header {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .info-header i {
+    font-size: 1.1rem;
+  }
+
+  .info-header h3 {
+    font-size: 0.95rem;
+  }
+
+  .info-card p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .bmi-table th,
+  .bmi-table td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.75rem;
+  }
+
+  .footer {
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+    font-size: 0.75rem;
+  }
+
+  .disclaimer {
+    font-size: 0.65rem;
+  }
+
+  .controls-bar {
+    top: var(--spacing-xs);
+    right: var(--spacing-xs);
+    gap: var(--spacing-xs);
+  }
+
+  [dir="rtl"] .controls-bar {
+    right: auto;
+    left: var(--spacing-xs);
+  }
+
+  .control-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .lang-toggle .lang-text {
+    font-size: 0.75rem;
+  }
+
+  .toast {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.8rem;
+    bottom: var(--spacing-md);
+  }
+
+  .toast-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.65rem;
+  }
+}
+
+/* Extra Small Devices (< 360px) */
+@media (max-width: 359px) {
+  html {
+    font-size: 13px;
+  }
+
+  .container {
+    padding: 0.4rem;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .logo-text {
+    font-size: 1.1rem;
+  }
+
+  .tagline {
+    font-size: 0.7rem;
+  }
+
+  .calculator-card,
+  .results-card {
+    padding: var(--spacing-sm);
+  }
+
+  .gender-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+
+  .bmi-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .bmi-number {
+    font-size: 1.75rem;
+  }
+
+  .control-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Landscape Mode for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .header {
+    padding: var(--spacing-sm) 0;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .hero-section {
+    display: none;
+  }
+
+  .main-content {
     gap: var(--spacing-md);
+  }
+
+  .calculator-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    align-items: start;
+  }
+
+  .bmi-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .bmi-number {
+    font-size: 1.75rem;
+  }
+}
+
+/* High DPI / Retina Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .calculator-card,
+  .results-card,
+  .info-card,
+  .history-card {
+    border-width: 0.5px;
   }
 }
 
