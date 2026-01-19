@@ -1,14 +1,487 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta naٍ" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="BMI Calculator - Calculate your Body Mass Index easily and accurately. Get personalized health recommendations.">
+    <meta name="keywords" content="BMI, Body Mass Index, Health, Weight, Calculator">
+    <meta name="author" content="BMI Calculator">
+    <title>BMI Calculator | حاسبة مؤشر كتلة الجسم</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <!-- Theme & Language Toggle -->
+    <div class="controls-bar">
+        <button class="control-btn theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </button>
+        <button class="control-btn lang-toggle" id="langToggle" aria-label="Toggle language">
+            <span class="lang-text">AR</span>
+        </button>
+    </div>
 
+    <!-- Background Decorations -->
+    <div class="bg-decorations">
+        <div class="decoration decoration-1"></div>
+        <div class="decoration decoration-2"></div>
+        <div class="decoration decoration-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-weight-scale"></i>
+                </div>
+                <h1 class="logo-text" data-en="BMI Calculator" data-ar="حاسبة مؤشر كتلة الجسم">BMI Calculator</h1>
+            </div>
+            <p class="tagline" data-en="Calculate your Body Mass Index easily and accurately"
+                data-ar="احسب مؤشر كتلة جسمك بسهولة ودقة">Calculate your Body Mass Index easily and accurately</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section with Illustration -->
+            <section class="hero-section">
+                <div class="hero-illustration">
+                    <!-- SVG Illustration - Fitness/Health Theme -->
+                    <svg viewBox="0 0 500 400" class="hero-svg" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background Elements -->
+                        <defs>
+                            <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:var(--primary-light);stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:var(--secondary-light);stop-opacity:0.3" />
+                            </linearGradient>
+                            <linearGradient id="personGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:var(--primary)" />
+                                <stop offset="100%" style="stop-color:var(--primary-dark)" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Decorative Circles -->
+                        <circle cx="400" cy="80" r="60" fill="url(#bgGradient)" class="float-animation" />
+                        <circle cx="80" cy="300" r="40" fill="url(#bgGradient)" class="float-animation-delayed" />
+
+                        <!-- Scale/Weight Machine -->
+                        <g class="scale-group" transform="translate(180, 180)">
+                            <!-- Scale Base -->
+                            <ellipse cx="70" cy="180" rx="90" ry="20" fill="var(--gray-300)" opacity="0.5" />
+                            <rect x="10" y="140" width="120" height="40" rx="8" fill="var(--gray-200)" />
+                            <rect x="20" y="150" width="100" height="20" rx="4" fill="var(--surface)" />
+
+                            <!-- Scale Display -->
+                            <rect x="30" y="90" width="80" height="50" rx="8" fill="var(--primary)" />
+                            <rect x="35" y="95" width="70" height="40" rx="4" fill="var(--surface)" />
+                            <text x="70" y="122" text-anchor="middle" fill="var(--primary)" font-size="16"
+                                font-weight="bold" class="scale-number">72.5</text>
+                            <text x="70" y="132" text-anchor="middle" fill="var(--gray-500)" font-size="8">kg</text>
+
+                            <!-- Scale Stand -->
+                            <rect x="60" y="50" width="20" height="45" fill="var(--gray-300)" />
+                            <circle cx="70" cy="45" r="25" fill="var(--primary)" stroke="var(--primary-dark)"
+                                stroke-width="3" />
+                            <circle cx="70" cy="45" r="18" fill="var(--surface)" />
+
+                            <!-- Gauge Needle -->
+                            <line x1="70" y1="45" x2="70" y2="30" stroke="var(--danger)" stroke-width="2"
+                                stroke-linecap="round" class="needle-animation" />
+                            <circle cx="70" cy="45" r="4" fill="var(--gray-600)" />
+                        </g>
+
+                        <!-- Person Silhouette -->
+                        <g class="person-group" transform="translate(300, 100)">
+                            <!-- Head -->
+                            <circle cx="50" cy="30" r="28" fill="var(--skin-tone, #FDBF91)" />
+                            <ellipse cx="50" cy="12" rx="30" ry="18" fill="var(--hair-color, #4A3728)" />
+
+                            <!-- Body -->
+                            <path d="M30 55 Q25 90 30 130 L70 130 Q75 90 70 55 Z" fill="var(--primary)" />
+
+                            <!-- Arms -->
+                            <path d="M25 60 Q5 80 15 110" stroke="var(--skin-tone, #FDBF91)" stroke-width="12"
+                                stroke-linecap="round" fill="none" />
+                            <path d="M75 60 Q95 80 85 110" stroke="var(--skin-tone, #FDBF91)" stroke-width="12"
+                                stroke-linecap="round" fill="none" />
+
+                            <!-- Legs -->
+                            <rect x="32" y="125" width="14" height="60" rx="7" fill="var(--gray-600)" />
+                            <rect x="54" y="125" width="14" height="60" rx="7" fill="var(--gray-600)" />
+
+                            <!-- Measuring Tape -->
+                            <g class="tape-animation">
+                                <rect x="85" y="70" width="40" height="15" rx="3" fill="var(--warning)" />
+                                <line x1="90" y1="70" x2="90" y2="85" stroke="var(--gray-800)" stroke-width="1" />
+                                <line x1="100" y1="70" x2="100" y2="85" stroke="var(--gray-800)" stroke-width="1" />
+                                <line x1="110" y1="70" x2="110" y2="85" stroke="var(--gray-800)" stroke-width="1" />
+                                <line x1="120" y1="70" x2="120" y2="85" stroke="var(--gray-800)" stroke-width="1" />
+                            </g>
+                        </g>
+
+                        <!-- Health Icons -->
+                        <g class="health-icons">
+                            <g transform="translate(60, 80)" class="bounce-animation">
+                                <circle r="25" fill="var(--success-light)" />
+                                <text y="6" text-anchor="middle" font-size="20">❤️</text>
+                            </g>
+                            <g transform="translate(420, 280)" class="bounce-animation-delayed">
+                                <circle r="25" fill="var(--primary-light)" />
+                                <text y="6" text-anchor="middle" font-size="20">💪</text>
+                            </g>
+                            <g transform="translate(100, 200)" class="bounce-animation">
+                                <circle r="20" fill="var(--secondary-light)" />
+                                <text y="5" text-anchor="middle" font-size="16">🥗</text>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- Calculator Section -->
+            <section class="calculator-section">
+                <div class="calculator-card">
+                    <div class="card-header">
+                        <h2 data-en="Calculate Your BMI" data-ar="احسب مؤشر كتلة جسمك">Calculate Your BMI</h2>
+                        <p data-en="Fill in your details below" data-ar="أدخل بياناتك أدناه">Fill in your details below
+                        </p>
+                    </div>
+
+                    <form id="bmiForm" class="bmi-form">
+                        <!-- Unit System Toggle -->
+                        <div class="form-group unit-toggle-group">
+                            <label data-en="Unit System" data-ar="نظام الوحدات">Unit System</label>
+                            <div class="toggle-switch-container">
+                                <button type="button" class="toggle-btn active" data-unit="metric" data-en="Metric"
+                                    data-ar="متري">Metric</button>
+                                <button type="button" class="toggle-btn" data-unit="imperial" data-en="Imperial"
+                                    data-ar="إمبراطوري">Imperial</button>
+                            </div>
+                        </div>
+
+                        <!-- Gender Selection -->
+                        <div class="form-group gender-group">
+                            <label data-en="Gender" data-ar="الجنس">Gender</label>
+                            <div class="gender-options">
+                                <input type="radio" name="gender" id="male" value="male" checked>
+                                <label for="male" class="gender-card">
+                                    <div class="gender-icon">
+                                        <i class="fas fa-mars"></i>
+                                    </div>
+                                    <span data-en="Male" data-ar="ذكر">Male</span>
+                                </label>
+
+                                <input type="radio" name="gender" id="female" value="female">
+                                <label for="female" class="gender-card">
+                                    <div class="gender-icon">
+                                        <i class="fas fa-venus"></i>
+                                    </div>
+                                    <span data-en="Female" data-ar="أنثى">Female</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Age Input -->
+                        <div class="form-group age-group">
+                            <label for="age" data-en="Age" data-ar="العمر">Age</label>
+                            <div class="input-wrapper">
+                                <div class="input-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <input type="number" id="age" name="age" min="2" max="120" value="25" required>
+                                <span class="input-unit" data-en="years" data-ar="سنة">years</span>
+                            </div>
+                            <input type="range" id="ageSlider" min="2" max="120" value="25" class="slider">
+                        </div>
+
+                        <!-- Height Input -->
+                        <div class="form-group height-group">
+                            <label for="height" data-en="Height" data-ar="الطول">Height</label>
+                            <div class="input-wrapper metric-input">
+                                <div class="input-icon">
+                                    <i class="fas fa-ruler-vertical"></i>
+                                </div>
+                                <input type="number" id="height" name="height" min="50" max="300" value="170" step="0.1"
+                                    required>
+                                <span class="input-unit">cm</span>
+                            </div>
+                            <div class="input-wrapper imperial-input hidden">
+                                <div class="input-icon">
+                                    <i class="fas fa-ruler-vertical"></i>
+                                </div>
+                                <input type="number" id="heightFt" name="heightFt" min="1" max="8" value="5"
+                                    placeholder="ft">
+                                <span class="input-unit">ft</span>
+                                <input type="number" id="heightIn" name="heightIn" min="0" max="11" value="7"
+                                    placeholder="in">
+                                <span class="input-unit">in</span>
+                            </div>
+                            <input type="range" id="heightSlider" min="50" max="250" value="170"
+                                class="slider metric-input">
+                            <input type="range" id="heightSliderFt" min="36" max="96" value="67"
+                                class="slider imperial-input hidden">
+                        </div>
+
+                        <!-- Weight Input -->
+                        <div class="form-group weight-group">
+                            <label for="weight" data-en="Weight" data-ar="الوزن">Weight</label>
+                            <div class="input-wrapper metric-input">
+                                <div class="input-icon">
+                                    <i class="fas fa-weight-scale"></i>
+                                </div>
+                                <input type="number" id="weight" name="weight" min="10" max="500" value="70" step="0.1"
+                                    required>
+                                <span class="input-unit">kg</span>
+                            </div>
+                            <div class="input-wrapper imperial-input hidden">
+                                <div class="input-icon">
+                                    <i class="fas fa-weight-scale"></i>
+                                </div>
+                                <input type="number" id="weightLb" name="weightLb" min="22" max="1100" value="154"
+                                    step="0.1">
+                                <span class="input-unit">lb</span>
+                            </div>
+                            <input type="range" id="weightSlider" min="20" max="200" value="70"
+                                class="slider metric-input">
+                            <input type="range" id="weightSliderLb" min="44" max="440" value="154"
+                                class="slider imperial-input hidden">
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button type="submit" class="calculate-btn">
+                            <i class="fas fa-calculator"></i>
+                            <span data-en="Calculate BMI" data-ar="احسب الآن">Calculate BMI</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-card hidden" id="resultsCard">
+                    <div class="results-header">
+                        <h2 data-en="Your Results" data-ar="نتائجك">Your Results</h2>
+                    </div>
+
+                    <!-- BMI Value Display -->
+                    <div class="bmi-display">
+                        <div class="bmi-circle">
+                            <svg viewBox="0 0 200 200" class="bmi-ring">
+                                <circle cx="100" cy="100" r="90" class="ring-bg" />
+                                <circle cx="100" cy="100" r="90" class="ring-progress" id="bmiRing" />
+                            </svg>
+                            <div class="bmi-value">
+                                <span class="bmi-number" id="bmiValue">0</span>
+                                <span class="bmi-label">BMI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BMI Category -->
+                    <div class="bmi-category" id="bmiCategory">
+                        <div class="category-icon" id="categoryIcon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3 class="category-text" id="categoryText">Normal Weight</h3>
+                    </div>
+
+                    <!-- BMI Scale -->
+                    <div class="bmi-scale">
+                        <div class="scale-bar">
+                            <div class="scale-segment underweight" data-en="Underweight" data-ar="نحافة"></div>
+                            <div class="scale-segment normal" data-en="Normal" data-ar="طبيعي"></div>
+                            <div class="scale-segment overweight" data-en="Overweight" data-ar="زيادة وزن"></div>
+                            <div class="scale-segment obese" data-en="Obese" data-ar="سمنة"></div>
+                        </div>
+                        <div class="scale-pointer" id="scalePointer">
+                            <div class="pointer-arrow"></div>
+                        </div>
+                        <div class="scale-labels">
+                            <span>16</span>
+                            <span>18.5</span>
+                            <span>25</span>
+                            <span>30</span>
+                            <span>40</span>
+                        </div>
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div class="results-info">
+                        <div class="info-item">
+                            <div class="info-icon healthy">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div class="info-content">
+                                <span class="info-label" data-en="Healthy Weight Range"
+                                    data-ar="نطاق الوزن الصحي">Healthy Weight Range</span>
+                                <span class="info-value" id="healthyRange">60 - 75 kg</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon ideal">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="info-content">
+                                <span class="info-label" data-en="Ideal Weight" data-ar="الوزن المثالي">Ideal
+                                    Weight</span>
+                                <span class="info-value" id="idealWeight">68 kg</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon difference">
+                                <i class="fas fa-arrows-alt-v"></i>
+                            </div>
+                            <div class="info-content">
+                                <span class="info-label" data-en="Weight Difference" data-ar="فرق الوزن">Weight
+                                    Difference</span>
+                                <span class="info-value" id="weightDiff">+2 kg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Tips -->
+                    <div class="health-tips" id="healthTips">
+                        <h4 data-en="Health Tips" data-ar="نصائح صحية">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Health Tips</span>
+                        </h4>
+                        <ul class="tips-list" id="tipsList">
+                            <li data-en="Maintain a balanced diet" data-ar="حافظ على نظام غذائي متوازن">Maintain a
+                                balanced diet</li>
+                            <li data-en="Exercise regularly" data-ar="مارس الرياضة بانتظام">Exercise regularly</li>
+                            <li data-en="Stay hydrated" data-ar="اشرب كمية كافية من الماء">Stay hydrated</li>
+                        </ul>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="result-actions">
+                        <button class="action-btn recalculate" id="recalculateBtn">
+                            <i class="fas fa-redo"></i>
+                            <span data-en="Recalculate" data-ar="إعادة الحساب">Recalculate</span>
+                        </button>
+                        <button class="action-btn save" id="saveBtn">
+                            <i class="fas fa-save"></i>
+                            <span data-en="Save Result" data-ar="حفظ النتيجة">Save Result</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section class="history-section hidden" id="historySection">
+                <div class="history-card">
+                    <div class="history-header">
+                        <h3 data-en="Your History" data-ar="سجل القياسات">
+                            <i class="fas fa-history"></i>
+                            <span>Your History</span>
+                        </h3>
+                        <button class="clear-history-btn" id="clearHistoryBtn" data-en="Clear All" data-ar="مسح الكل">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="history-list" id="historyList">
+                        <!-- History items will be added here dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <div class="info-card bmi-info">
+                    <div class="info-header">
+                        <i class="fas fa-info-circle"></i>
+                        <h3 data-en="What is BMI?" data-ar="ما هو مؤشر كتلة الجسم؟">What is BMI?</h3>
+                    </div>
+                    <p data-en="Body Mass Index (BMI) is a measure of body fat based on height and weight. It's a useful screening tool for weight categories that may lead to health problems."
+                        data-ar="مؤشر كتلة الجسم (BMI) هو مقياس لدهون الجسم بناءً على الطول والوزن. إنه أداة فحص مفيدة لفئات الوزن التي قد تؤدي إلى مشاكل صحية.">
+                        Body Mass Index (BMI) is a measure of body fat based on height and weight. It's a useful
+                        screening tool for weight categories that may lead to health problems.
+                    </p>
+                </div>
+
+                <div class="info-card bmi-table">
+                    <div class="info-header">
+                        <i class="fas fa-table"></i>
+                        <h3 data-en="BMI Categories" data-ar="تصنيفات BMI">BMI Categories</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-en="Category" data-ar="التصنيف">Category</th>
+                                <th data-en="BMI Range" data-ar="نطاق BMI">BMI Range</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="severe-underweight">
+                                <td data-en="Severe Underweight" data-ar="نحافة شديدة">Severe Underweight</td>
+                                <td>&lt; 16</td>
+                            </tr>
+                            <tr class="underweight">
+                                <td data-en="Underweight" data-ar="نحافة">Underweight</td>
+                                <td>16 - 18.5</td>
+                            </tr>
+                            <tr class="normal">
+                                <td data-en="Normal Weight" data-ar="وزن طبيعي">Normal Weight</td>
+                                <td>18.5 - 25</td>
+                            </tr>
+                            <tr class="overweight">
+                                <td data-en="Overweight" data-ar="زيادة وزن">Overweight</td>
+                                <td>25 - 30</td>
+                            </tr>
+                            <tr class="obese">
+                                <td data-en="Obese" data-ar="سمنة">Obese</td>
+                                <td>30 - 40</td>
+                            </tr>
+                            <tr class="severe-obese">
+                                <td data-en="Severe Obesity" data-ar="سمنة مفرطة">Severe Obesity</td>
+                                <td>&gt; 40</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 BMI Calculator. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights
+                    reserved.</span></p>
+            <p class="disclaimer"
+                data-en="This calculator is for informational purposes only. Consult a healthcare professional for medical advice."
+                data-ar="هذه الحاسبة للأغراض المعلوماتية فقط. استشر أخصائي رعاية صحية للحصول على نصيحة طبية.">
+                This calculator is for informational purposes only. Consult a healthcare professional for medical
+                advice.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        <span class="toast-message" id="toastMessage">Saved successfully!</span>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
 </body>
 
 </html>
