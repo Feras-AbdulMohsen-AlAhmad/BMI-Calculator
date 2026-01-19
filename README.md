@@ -566,7 +566,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ```
 MIT License
 
-Copyright (c) 2026 Feras Abdul Mohsen Al Ahmad
+Copyright (c) 2026 Firas AL-Ahmad
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -595,7 +595,7 @@ SOFTWARE.
   <img src="https://github.com/Feras-AbdulMohsen-AlAhmad.png" width="100" height="100" style="border-radius: 50%;" alt="Author">
 </p>
 
-<h3 align="center">Feras Abdul Mohsen Al Ahmad</h3>
+<h3 align="center">Firas AL-Ahmad</h3>
 
 <p align="center">
   <a href="https://github.com/Feras-AbdulMohsen-AlAhmad">
