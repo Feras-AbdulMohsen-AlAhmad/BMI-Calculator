@@ -274,6 +274,9 @@ const elements = {
   // Toast
   toast: document.getElementById("toast"),
   toastMessage: document.getElementById("toastMessage"),
+
+  // Scroll to Top
+  scrollTopBtn: document.getElementById("scrollTopBtn"),
 };
 
 // ============ Utility Functions ============
@@ -976,11 +979,33 @@ function initEventListeners() {
   });
 }
 
+// ============ Scroll to Top Functionality ============
+
+function initScrollToTop() {
+  const scrollThreshold = 300;
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > scrollThreshold) {
+      elements.scrollTopBtn.classList.add("visible");
+    } else {
+      elements.scrollTopBtn.classList.remove("visible");
+    }
+  });
+
+  elements.scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
+
 // ============ Initialization ============
 
 function init() {
   loadPreferences();
   initEventListeners();
+  initScrollToTop();
 
   // Check system preference for dark mode
   if (!localStorage.getItem(CONFIG.STORAGE_KEYS.THEME)) {
